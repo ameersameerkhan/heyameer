@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Ameer Khan" />
+  <meta property="og:description" content="Building with intention in an uncertain world." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/social-preview.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ameer Khan" />
+  <meta name="twitter:description" content="Building with intention in an uncertain world." />
+  <meta name="twitter:image" content="images/social-preview.jpg" />
+
+  <title>Ameer Khan</title>
+  <meta name="description" content="Building with intention in an uncertain world." />
+
+  <!--
+    UMAMI ANALYTICS PLACEHOLDER
+
+    Replace PASTE_YOUR_UMAMI_WEBSITE_ID_HERE with your Umami website ID.
+
+    Example:
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="your-id-here"></script>
+  -->
+  <!--   <script defer src="https://cloud.umami.is/script.js" data-website-id="PASTE_YOUR_UMAMI_WEBSITE_ID_HERE">
+  </script> -->
+
+  <!--
+    SINGLE FILE PERSONAL PAGE
+
+    Image:
+    Place your profile photo at:
+    images/profile.jpg
+
+    Editing:
+    Update the siteData object near the bottom of this file.
+
+    Links:
+    Clicking each project opens a clean modal window.
+    The modal has a Launch Project button that opens the project in a new tab.
+  -->
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+    :root {
+      --bg: #04140f;
+      --bg-2: #071d16;
+      --panel-solid: #0a2119;
+      --text: #f4efe4;
+      --muted: #a9b0a6;
+      --soft: #849086;
+      --line: rgba(244, 239, 228, 0.095);
+      --line-soft: rgba(244, 239, 228, 0.065);
+      --line-strong: rgba(244, 239, 228, 0.16);
+      --accent: #d8b56d;
+      --accent-muted: rgba(216, 181, 109, 0.72);
+      --button: rgba(244, 239, 228, 0.045);
+      --button-hover: rgba(244, 239, 228, 0.075);
+      --shadow: rgba(0, 0, 0, 0.38);
+      --name-font: "Instrument Serif", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --body-font: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --width: 396px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% 10%, rgba(216, 181, 109, 0.10), transparent 230px),
+        radial-gradient(circle at 50% 43%, rgba(22, 79, 61, 0.42), transparent 360px),
+        linear-gradient(180deg, var(--bg-2), var(--bg) 52%, #020907);
+      font-family: var(--body-font);
+      letter-spacing: -0.012em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(244, 239, 228, 0.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 239, 228, 0.032) 1px, transparent 1px);
+      background-size: 12px 12px;
+      -webkit-mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.72) 30%, transparent 82%);
+      mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.72) 30%, transparent 82%);
+      opacity: 0.62;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(2, 9, 7, 0.32) 58%, rgba(2, 9, 7, 0.82) 100%);
+    }
+
+    a,
+    button {
+      color: inherit;
+      font: inherit;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    button:focus:not(:focus-visible),
+    a:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 1px solid rgba(216, 181, 109, 0.5);
+      outline-offset: 4px;
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: min(calc(100% - 44px), var(--width));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 96px 0 48px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 6px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rise 720ms cubic-bezier(.2, .8, .2, 1) 80ms forwards;
+    }
+
+    .avatar-wrap {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 26px;
+      padding: 4px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background:
+        linear-gradient(180deg, rgba(244, 239, 228, 0.18), rgba(244, 239, 228, 0.03)),
+        var(--panel-solid);
+      box-shadow:
+        0 22px 70px rgba(0, 0, 0, 0.32),
+        0 0 0 7px rgba(216, 181, 109, 0.035);
+      transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .avatar-wrap:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 26px 80px rgba(0, 0, 0, 0.42),
+        0 0 0 9px rgba(216, 181, 109, 0.055);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 999px;
+      object-fit: cover;
+      background: #10261e;
+      filter: saturate(0.9) contrast(1.05);
+    }
+
+    .avatar-fallback {
+      width: 100%;
+      height: 100%;
+      display: none;
+      place-items: center;
+      border-radius: 999px;
+      background: #10261e;
+      color: var(--text);
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--name-font);
+      font-size: clamp(31px, 7vw, 44px);
+      line-height: 1;
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .tagline {
+      width: min(100%, 390px);
+      margin: 18px auto 0;
+      color: rgba(244, 239, 228, 0.78);
+      font-family: var(--body-font);
+      font-size: clamp(16px, 3.9vw, 19px);
+      line-height: 1.38;
+      font-weight: 400;
+      letter-spacing: -0.012em;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .social-button {
+      width: 48px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--button);
+      color: var(--muted);
+      transition:
+        transform 180ms ease,
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease;
+    }
+
+    .social-button:hover {
+      transform: translateY(-2px);
+      background: var(--button-hover);
+      border-color: rgba(216, 181, 109, 0.24);
+      color: var(--text);
+    }
+
+    .social-button svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 1.75;
+    }
+
+    .links {
+      margin-top: 78px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rise 720ms cubic-bezier(.2, .8, .2, 1) 220ms forwards;
+    }
+
+    .section-label {
+      margin: 0 0 12px;
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+    }
+
+    .project-list {
+      display: grid;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 24px;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 0;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      color: inherit;
+      transition: padding-left 220ms ease, border-color 220ms ease;
+    }
+
+    .project-row:hover,
+    .project-row:focus-visible {
+      padding-left: 5px;
+      border-color: rgba(216, 181, 109, 0.24);
+    }
+
+    .project-title {
+      margin: 0;
+      color: rgba(244, 239, 228, 0.92);
+      font-size: 17px;
+      line-height: 1.15;
+      font-weight: 600;
+      letter-spacing: -0.018em;
+    }
+
+    .project-description {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 400;
+      letter-spacing: -0.012em;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      color: var(--soft);
+      transition: color 220ms ease, transform 220ms ease;
+    }
+
+    .project-row:hover .project-icon {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    .project-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 1.7;
+    }
+
+    .footer {
+      margin-top: auto;
+      padding-top: 72px;
+      text-align: center;
+      color: var(--soft);
+      font-size: 14px;
+      letter-spacing: -0.012em;
+      opacity: 0;
+      animation: fade 700ms ease 420ms forwards;
+    }
+
+    .footer strong {
+      color: rgba(244, 239, 228, 0.82);
+      font-weight: 500;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      place-items: center;
+      padding: 22px;
+      background: rgba(2, 9, 7, 0.62);
+      backdrop-filter: blur(16px);
+    }
+
+    .modal-overlay.active {
+      display: grid;
+      animation: fade 180ms ease forwards;
+    }
+
+    .modal {
+      width: min(100%, 470px);
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(244, 239, 228, 0.046), transparent 45%),
+        #071b14;
+      box-shadow: 0 36px 120px rgba(0, 0, 0, 0.48);
+      overflow: hidden;
+      transform: translateY(10px) scale(0.985);
+      animation: modalIn 220ms cubic-bezier(.2, .8, .2, 1) forwards;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 15px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .modal-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--soft);
+    }
+
+    .close-button {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(244, 239, 228, 0.025);
+      transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .close-button:hover {
+      color: var(--text);
+      background: rgba(244, 239, 228, 0.055);
+      border-color: rgba(244, 239, 228, 0.11);
+    }
+
+    .close-button svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 1.7;
+    }
+
+    .modal-body {
+      padding: 24px;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-family: var(--name-font);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: 0;
+    }
+
+    .modal-copy {
+      margin: 14px 0 0;
+      color: rgba(244, 239, 228, 0.72);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.48;
+      letter-spacing: -0.012em;
+    }
+
+    .modal-meta {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .pill {
+      min-height: 27px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 9px;
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      color: var(--muted);
+      background: rgba(244, 239, 228, 0.026);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .launch-button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      transition: transform 180ms ease, opacity 180ms ease, box-shadow 180ms ease;
+      border: 1px solid rgba(216, 181, 109, 0.2);
+      background: var(--accent);
+      color: #06110d;
+      font-weight: 600;
+      box-shadow: 0 12px 32px rgba(216, 181, 109, 0.12);
+    }
+
+    .launch-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 38px rgba(216, 181, 109, 0.16);
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fade {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalIn {
+      to {
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(calc(100% - 48px), var(--width));
+        padding-top: 86px;
+      }
+
+      .avatar-wrap {
+        width: 86px;
+        height: 86px;
+        margin-bottom: 24px;
+      }
+
+      .links {
+        margin-top: 62px;
+      }
+
+      .project-row {
+        padding: 17px 0;
+      }
+
+      .project-title {
+        font-size: 16px;
+      }
+
+      .project-description {
+        font-size: 15px;
+      }
+
+      .footer {
+        padding-top: 78px;
+      }
+
+      .modal-body {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .page {
+        width: min(calc(100% - 36px), var(--width));
+      }
+
+      .social-button {
+        width: 40px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 1ms !important;
+        transition-duration: 1ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero" id="home">
+      <div class="avatar-wrap">
+        <img class="avatar" id="avatar" src="images/profile.jpg" alt="Ameer Khan" />
+        <div class="avatar-fallback" id="avatarFallback">A</div>
+      </div>
+
+      <h1 id="name">Ameer Khan</h1>
+      <p class="tagline" id="tagline">Building with intention in an uncertain world.</p>
+
+      <div class="socials" id="socials" aria-label="Social links"></div>
+    </section>
+
+    <section class="links" id="projects">
+      <p class="section-label" id="projectsLabel">Projects</p>
+      <div class="project-list" id="projectList"></div>
+    </section>
+
+    <footer class="footer" id="contact">
+      <span id="footerText">© 2026 <strong> · Ameer Khan</strong></span>
+    </footer>
+  </main>
+
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <article class="modal">
+      <div class="modal-top">
+        <span class="modal-label" id="modalLabel">Project window</span>
+        <button class="close-button" id="closeModal" type="button" aria-label="Close window">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-copy" id="modalCopy"></p>
+        <div class="modal-meta" id="modalMeta"></div>
+
+        <div class="modal-actions">
+          <a class="launch-button" id="modalLaunch" href="#" target="_blank" rel="noopener noreferrer">Launch
+            project</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    /*
+      EDIT CONTENT HERE
+    */
+
+    const siteData = {
+      profile: {
+        name: "Ameer Khan",
+        tagline: "Building with intention in an uncertain world.",
+        image: "images/profile.jpg",
+        imageAlt: "Ameer Khan",
+        footer: "© 2026  · Ameer Khan"
+      },
+
+      socials: [
+        {
+          label: "X",
+          url: "https://x.com/ameersameerkhan",
+          icon: "x"
+        },
+        {
+          label: "LinkedIn",
+          url: "https://www.linkedin.com/in/ameerkhan/",
+          icon: "linkedin"
+        },
+        {
+          label: "Email",
+          url: "mailto:ameer@heyameer.com",
+          icon: "mail"
+        }
+      ],
+
+      projectsLabel: "Projects",
+
+      projects: [
+        {
+          title: "Bare Future",
+          description: "Notes on the future of AI.",
+          detail: "A writing space for practical thoughts on AI, work, systems and the near future. Calm, sharp notes rather than hype.",
+          url: "#",
+          tags: ["Writing", "AI", "Active"]
+        },
+        {
+          title: "Cuematic",
+          description: "A simple teleprompter for creators.",
+          detail: "A lightweight tool for reading scripts cleanly on screen, useful for creators, founders and anyone recording structured video.",
+          url: "#",
+          tags: ["Tool", "Creator", "Prototype"]
+        },
+        {
+          title: "11 Plus Prep",
+          description: "A free 11+ preparation resource for UK families. ",
+          detail: "A calm study hub for 11+ preparation, built from real tutoring sessions, real gaps and parent-led practice.",
+          url: "#",
+          tags: ["Education", "Family", "Active"]
+        }
+      ]
+    };
+
+    const icons = {
+      x: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-linecap="round"/></svg>`,
+      linkedin: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="currentColor"/></svg>`,
+      mail: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      external: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 3h6v6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14L21 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+    };
+
+    const avatar = document.getElementById("avatar");
+    const avatarFallback = document.getElementById("avatarFallback");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalCopy = document.getElementById("modalCopy");
+    const modalMeta = document.getElementById("modalMeta");
+    const modalLaunch = document.getElementById("modalLaunch");
+    let lastFocusedElement = null;
+
+    function setText(id, value) {
+      const element = document.getElementById(id);
+      if (element) element.textContent = value;
+    }
+
+    function renderProfile() {
+      setText("name", siteData.profile.name);
+      setText("tagline", siteData.profile.tagline);
+
+      avatar.src = siteData.profile.image;
+      avatar.alt = siteData.profile.imageAlt;
+      avatarFallback.textContent = siteData.profile.name.trim().charAt(0);
+
+      avatar.addEventListener("error", () => {
+        avatar.style.display = "none";
+        avatarFallback.style.display = "grid";
+      });
+
+      document.getElementById("footerText").innerHTML = siteData.profile.footer.replace(siteData.profile.name, `<strong>${siteData.profile.name}</strong>`);
+    }
+
+    function renderSocials() {
+      const container = document.getElementById("socials");
+      container.innerHTML = "";
+
+      siteData.socials.forEach(item => {
+        const link = document.createElement("a");
+        link.className = "social-button";
+        link.href = item.url;
+        link.target = item.url.startsWith("mailto:") ? "_self" : "_blank";
+        link.rel = "noopener noreferrer";
+        link.ariaLabel = item.label;
+        link.innerHTML = icons[item.icon] || item.label;
+        container.appendChild(link);
+      });
+    }
+
+    function renderProjects() {
+      setText("projectsLabel", siteData.projectsLabel);
+
+      const container = document.getElementById("projectList");
+      container.innerHTML = "";
+
+      siteData.projects.forEach((project, index) => {
+        const button = document.createElement("button");
+        button.className = "project-row";
+        button.type = "button";
+        button.innerHTML = `
+          <span>
+            <h2 class="project-title">${project.title}</h2>
+            <p class="project-description">${project.description}</p>
+          </span>
+          <span class="project-icon">${icons.external}</span>
+        `;
+
+        button.addEventListener("click", () => openProject(index));
+        container.appendChild(button);
+      });
+    }
+
+    function openProject(index) {
+      const project = siteData.projects[index];
+
+      modalTitle.textContent = project.title;
+      modalCopy.textContent = project.detail || project.description;
+      modalLaunch.href = project.url;
+
+      modalMeta.innerHTML = "";
+      project.tags.forEach(tag => {
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.textContent = tag;
+        modalMeta.appendChild(pill);
+      });
+
+      lastFocusedElement = document.activeElement;
+
+      modalOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+      requestAnimationFrame(() => {
+        document.getElementById("closeModal").focus();
+      });
+    }
+
+    function closeProject() {
+      modalOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    function bindEvents() {
+      document.getElementById("closeModal").addEventListener("click", closeProject);
+
+      modalOverlay.addEventListener("click", event => {
+        if (event.target === modalOverlay) closeProject();
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") closeProject();
+      });
+    }
+
+    function init() {
+      renderProfile();
+      renderSocials();
+      renderProjects();
+      bindEvents();
+    }
+
+    init();
+  </script>
+</body>
+
+</html>
