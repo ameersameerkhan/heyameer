@@ -5,12 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Ameer Khan</title>
+
   <meta name="description"
-    content="A personal operating page for Ameer Khan, sharing projects, notes and practical work on AI, systems and intentional building." />
+    content="Ameer Khan helps founders turn scattered work into clear systems, using AI where it genuinely helps. Practical work on AI, operations, software and systems." />
 
   <meta property="og:title" content="Ameer Khan" />
   <meta property="og:description"
-    content="A personal operating page for Ameer Khan, sharing projects, notes and practical work on AI, systems and intentional building." />
+    content="Ameer Khan helps founders turn scattered work into clear systems, using AI where it genuinely helps. Practical work on AI, operations, software and systems." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://heyameer.com/" />
   <meta property="og:site_name" content="Ameer Khan" />
@@ -25,39 +27,12 @@
   <meta name="twitter:creator" content="@ameersameerkhan" />
   <meta name="twitter:title" content="Ameer Khan" />
   <meta name="twitter:description"
-    content="A personal operating page for Ameer Khan, sharing projects, notes and practical work on AI, systems and intentional building." />
+    content="Ameer Khan helps founders turn scattered work into clear systems, using AI where it genuinely helps. Practical work on AI, operations, software and systems." />
   <meta name="twitter:image" content="https://heyameer.com/images/social-preview-v2.jpg" />
   <meta property="twitter:image" content="https://heyameer.com/images/social-preview-v2.jpg" />
   <meta name="twitter:image:alt" content="Abstract dark green and gold graphic for Ameer Khan personal site." />
 
-  <title>Ameer Khan</title>
-  <meta name="description"
-    content="A personal operating page for Ameer Khan, sharing projects, notes and practical work on AI, systems and intentional building." />
-
-  <!--
-    UMAMI ANALYTICS PLACEHOLDER
-
-    Replace PASTE_YOUR_UMAMI_WEBSITE_ID_HERE with your Umami website ID.
-
-    Example:
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="your-id-here"></script>
-  -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3cd69d46-2dc3-48c2-9107-528350a36ca4"></script>
-
-  <!--
-    SINGLE FILE PERSONAL PAGE
-
-    Image:
-    Place your profile photo at:
-    images/profile.jpg
-
-    Editing:
-    Update the siteData object near the bottom of this file.
-
-    Links:
-    Clicking each project opens a clean modal window.
-    The modal has a Launch Project button that opens the project in a new tab.
-  -->
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
@@ -604,13 +579,13 @@
       </div>
 
       <h1 id="name">Ameer Khan</h1>
-      <p class="tagline" id="tagline">Building with intention in an uncertain world.</p>
+      <p class="tagline" id="tagline">I help founders turn scattered work into clear systems, using AI where it genuinely helps.</p>
 
       <div class="socials" id="socials" aria-label="Social links"></div>
     </section>
 
     <section class="links" id="projects">
-      <p class="section-label" id="projectsLabel">Projects</p>
+      <p class="section-label" id="projectsLabel">Current Work</p>
       <div class="project-list" id="projectList"></div>
     </section>
 
@@ -636,7 +611,7 @@
         <div class="modal-meta" id="modalMeta"></div>
 
         <div class="modal-actions">
-          <a class="launch-button" id="modalLaunch" href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+          <a class="launch-button" id="modalLaunch" href="#" target="_blank" rel="noopener noreferrer">Open</a>
         </div>
       </div>
     </article>
@@ -645,12 +620,22 @@
   <script>
     /*
       EDIT CONTENT HERE
+
+      POSITIONING NOTE (for future-you):
+      This page reflects the HeyAmeer direction -- practical AI operations for
+      founder-led teams -- with Stratum as the named method. It deliberately does
+      NOT commit to a niche (fintech / Islamic finance / etc.) yet. The tagline
+      points at the operating direction without boxing you in. Tighten the niche
+      on the page only once the market has told you which one is real.
+
+      When Stratum has its own page, swap its `url` below from the mailto to that
+      URL and change `cta` to "Learn more".
     */
 
     const siteData = {
       profile: {
         name: "Ameer Khan",
-        tagline: "Building with intention in an uncertain world.",
+        tagline: "I help founders turn scattered work into clear systems, using AI where it genuinely helps.",
         image: "images/profile.jpg",
         imageAlt: "Ameer Khan",
         footer: "© 2026 · Ameer Khan · acta, non verba"
@@ -674,30 +659,49 @@
         }
       ],
 
-      projectsLabel: "Projects",
+      projectsLabel: "Current Work",
 
       projects: [
         {
+          title: "Stratum OS",
+          description: "My method for finding and building the right AI workflow first.",
+          detail: "Stratum OS maps how work actually moves through a business, identifies the highest-leverage workflow to fix, then turns it into a clear internal system with human review built in.",
+          url: "mailto:ameer+stratum@heyameer.com",
+          cta: "Ask me about it",
+          tags: ["Systems Thinking", "AI Ops", "Active"]
+        },
+        {
           title: "Bare Future",
-          description: "Notes on the future of AI.",
-          detail: "A writing space for practical thoughts on AI, work, systems and the near future.",
+          description: "Notes on AI, work, systems and judgement.",
+          detail: "A writing space for practical thoughts on AI, work, systems, judgement and the near future.",
           url: "https://barefuture.substack.com/?utm_source=heyameer.com&utm_medium=website&utm_campaign=portfolio",
+          cta: "Read",
           tags: ["Writing", "AI", "Active"]
         },
         {
+          title: "Cuematic",
+          description: "A focused tool for clearer recording and delivery.",
+          detail: "A lightweight tool for reading scripts cleanly on screen, useful for founders, creators and anyone recording structured video.",
+          url: "https://cuematic.app/?utm_source=heyameer.com&utm_medium=website&utm_campaign=portfolio",
+          cta: "Open",
+          tags: ["Software", "Live"]
+        }
+
+        /*
+          KEPT OUT FOR FOCUS -- 11 Plus Prep.
+          Meaningful work, but the education/family domain pulls the page away
+          from the operating direction before a visitor understands it. Paste
+          back in if you want more range:
+
+        ,{
           title: "11 Plus Prep",
           description: "A free 11+ preparation resource for parents.",
           detail: "A calm study hub for 11+ preparation, built from real tutoring sessions, real gaps and parent-led practice.",
           url: "https://11-plus-prep.netlify.app/?utm_source=heyameer.com&utm_medium=website&utm_campaign=portfolio",
+          cta: "Open",
           tags: ["Education", "Family", "Active"]
-        },
-        {
-          title: "Cuematic",
-          description: "A simple teleprompter for creators.",
-          detail: "A lightweight tool for reading scripts cleanly on screen, useful for creators, founders and anyone recording structured video.",
-          url: "https://cuematic.app/?utm_source=heyameer.com&utm_medium=website&utm_campaign=portfolio",
-          tags: ["Tool", "Creator", "Prototype"]
         }
+        */
       ]
     };
 
@@ -747,7 +751,7 @@
         link.className = "social-button";
         link.href = item.url;
         link.target = item.url.startsWith("mailto:") ? "_self" : "_blank";
-        link.rel = "noopener noreferrer";
+        link.rel = item.url.startsWith("mailto:") ? "" : "noopener noreferrer";
         link.ariaLabel = item.label;
         link.innerHTML = icons[item.icon] || item.label;
         container.appendChild(link);
@@ -783,6 +787,15 @@
       modalTitle.textContent = project.title;
       modalCopy.textContent = project.detail || project.description;
       modalLaunch.href = project.url;
+      modalLaunch.textContent = project.cta || "Open";
+
+      if (project.url.startsWith("mailto:")) {
+        modalLaunch.target = "_self";
+        modalLaunch.removeAttribute("rel");
+      } else {
+        modalLaunch.target = "_blank";
+        modalLaunch.rel = "noopener noreferrer";
+      }
 
       modalMeta.innerHTML = "";
       project.tags.forEach(tag => {
